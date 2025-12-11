@@ -1,0 +1,56 @@
+﻿
+@{
+    
+}
+
+        <h1>@ViewData["Greeting"]</h1>
+
+        <h1>Лабораторная работа 1</h1>
+        <h2>Список</h2>
+        <ol type="A">
+            <li>элемент 1 списка</li>
+            <li>элемент 2 списка</li>
+            <li>элемент 3 списка</li>
+            <li>элемент 4 списка</li>
+        </ol>
+
+        <hr />
+
+        <h1>Форма</h1>
+        <form method="post">
+
+
+            <div class="my-element">
+               
+                <input type="checkbox" id="option1" name="options" value="value1">
+                <label for="option1">Чек-бокс 1</label>
+            </div>
+            <div class="my-element">
+                
+                <input type="checkbox" id="option2" name="options" value="value2">
+                <label for="option2">Чек-бокс 2</label>
+            </div>
+
+            <div class=" my-element radio-container">
+                 <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                 <label class="form-check-label" for="gridRadios1">First radio</label>
+
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">Second radio</label>
+
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                  <label class="form-check-label" for="gridRadios3">Third radio</label>
+            </div>
+
+            <div>
+                <label for="username">Логин:</label>
+                <input type="text" style="margin-left:90px; margin-bottom:20px;; border-radius:5px;width:1000px;" id="username" placeholder="Введите имя">
+            </div>
+
+            <div>
+                <label for="inputPassword3">Пароль:</label>
+                <input type="password" style="margin-left:80px; margin-bottom:20px; border-radius:5px;width:1000px;" id="inputPassword3" placeholder="Введите пароль">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-bottom:20px;">Отправить</button>
+        </form>

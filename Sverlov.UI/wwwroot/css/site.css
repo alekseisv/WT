@@ -1,0 +1,19 @@
+header, footer {
+    background-color: rgba(var(--bs-dark-rgb));
+}
+
+.nav-color {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.my-element {
+    margin-left: 150px; /* Отступ 30 пикселей слева */
+}
+
+.radio-container {
+    display: flex; /* Включает Flexbox */
+    align-items: center; /* Выравнивает по центру по вертикали */
+    gap: 15px; /* Отступ между элементами, заменит margin */
+    margin-bottom:20px;
+    margin-top: 10px;
+}
