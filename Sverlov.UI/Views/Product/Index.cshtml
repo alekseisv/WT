@@ -1,0 +1,180 @@
+﻿@model IEnumerable<Sverlov.Domain.Entities.Automobile>
+
+@{
+   int count = 0;
+
+   ViewData["Title"] = "Index";
+    var request = ViewContext.HttpContext.Request;
+    var returnUrl = request.Path +
+    request.QueryString.ToUriComponent();
+    var categories = ViewData["Categories"] as
+    IEnumerable<Sverlov.Domain.Entities.TheTransportType>;
+    }
+
+
+
+<h2 class="m-3">Машина дня</h2>
+<div class="row">
+    <!-- выбор категории -->
+    <div class="col-2 border-2">
+        <ul class="nav ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    role="button"
+                    aria-expanded="false">
+                    @ViewData["CurrentCategory"]
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item"
+                            asp-controller="Product"
+                            asp-route-theTransportType="@null"
+                            asp-route-pageNo="1">
+                            Все
+                        </a>
+                    </li>
+            @foreach (var item in categories)
+            {
+                <li>
+                    <a class="dropdown-item"
+                        asp-controller="Product"
+                        asp-route-theTransportType="@item.NormalizedName"
+                        asp-route-pageNo="1">
+                        @item.Name
+                    </a>
+                </li>
+             }
+                </ul>
+            </li>
+        </ul>
+    </div>
+   @*  @if (Model != null)
+    {
+        <div class="card-group">
+            @foreach (var item in Model)
+            {
+                <div class="col-4 p-4">
+                    <div class="card border-dark m-2">
+                        <img class="card-img-top" src="@item.Image" alt="No image available" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="cardtext">@item.Description</p>
+                            <h5><span class="badge bgsecondary">@item.LiftingCapacity кг</span></h5>
+                        </div><!-- card-body -->
+                        <div class="card-footer text-center">
+                            <a class="btn btn-outline-primary">
+                                Add to cart <i class="fa-solid facart-shopping"></i>
+                            </a>
+                        </div><!-- card-footer -->
+                    </div><!-- card -->
+                </div>
+                <!-- col -->
+            }
+        </div>
+}
+<h2 class="text-warning">@ViewData["Error"]</h2> *@
+
+
+
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LiftingCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parsedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheTransportTypeId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody> *@
+ @if (Model != null)
+{
+       
+@foreach (var item in Model) 
+{
+    // Start a new row every 3 items (0, 3, 6, etc.)
+    if (count % 3 == 0)
+    {
+        // Close the previous row div if it's not the very first item
+        if (count != 0)
+        {
+            @:</div>
+        }
+        // Open a new row div
+        @:<div class="row">
+    }
+
+    // Display the item in a column
+    <div class="col-sm-4">
+
+        <div class="card">
+          <div class="card-body">
+            <img src="@item.Image"/>
+            <h5 class="card-title">@item.Name</h5>
+            <p class="card-text">@item.Description</p>
+            <p class="card-text"> Грузоподъемность: @item.LiftingCapacity кг.</p>
+            <p class="card-text">Дата последнего тех. осмотра: @item.parsedDate</p>
+            <a href="#" class="btn btn-primary">Add to cart <i class="fa-solid fa-cart-shopping nav-color"></i></a>
+          </div>
+        </div>
+     </div>
+
+    count++; // Increment the counter
+}
+
+@* Make sure to close the last row div after the loop finishes *@
+@if (Model.Any())
+{
+    @:</div>
+}
+}
+<h2 class="text-warning">@ViewData["Error"]</h2>
+
+       @*  <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LiftingCapacity)
+            </td>
+            <td>
+                <img src="@item.Image"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parsedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+            </td>
+        </tr> 
+}
+    </tbody>
+</table>*@

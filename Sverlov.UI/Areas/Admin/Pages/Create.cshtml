@@ -1,0 +1,55 @@
+﻿@page
+@model Sverlov.UI.Areas.Admin.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Automobile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Automobile.Name" class="control-label"></label>
+                <input asp-for="Automobile.Name" class="form-control" />
+                <span asp-validation-for="Automobile.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Automobile.Description" class="control-label"></label>
+                <input asp-for="Automobile.Description" class="form-control" />
+                <span asp-validation-for="Automobile.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Automobile.LiftingCapacity" class="control-label"></label>
+                <input asp-for="Automobile.LiftingCapacity" class="form-control" />
+                <span asp-validation-for="Automobile.LiftingCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Automobile.Image" class="control-label"></label>
+                <input asp-for="Automobile.Image" class="form-control" />
+                <span asp-validation-for="Automobile.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Automobile.parsedDate" class="control-label"></label>
+                <input asp-for="Automobile.parsedDate" class="form-control" />
+                <span asp-validation-for="Automobile.parsedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Automobile.TheTransportTypeId" class="control-label"></label>
+                <select asp-for="Automobile.TheTransportTypeId" class ="form-control" asp-items="ViewBag.TheTransportTypeId" ></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

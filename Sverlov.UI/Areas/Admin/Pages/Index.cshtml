@@ -1,0 +1,66 @@
+﻿@page
+@model Sverlov.UI.Areas.Admin.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Automobile[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Automobile[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Automobile[0].LiftingCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Automobile[0].Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Automobile[0].parsedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Automobile[0].TheTransportType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Automobile) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LiftingCapacity)
+            </td>
+            <td>
+                <img src="@item.Image"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parsedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheTransportType.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,55 @@
+﻿@page
+@model Sverlov.UI.Areas.Admin.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Automobile</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Automobile.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Automobile.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Automobile.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Automobile.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Automobile.LiftingCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Automobile.LiftingCapacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Automobile.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Automobile.Image)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Automobile.parsedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Automobile.parsedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Automobile.TheTransportType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Automobile.TheTransportType.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Automobile.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
