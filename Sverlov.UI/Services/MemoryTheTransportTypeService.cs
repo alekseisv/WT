@@ -1,5 +1,5 @@
 ﻿using Sverlov.Domain.Entities;
-using Sverlov.Domain.Models;
+using Sverlov.API.Models;
 
 namespace Sverlov.UI.Services
 {

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sverlov.UI", "Sverlov.UI\Sv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sverlov.Domain", "Sverlov.Domain\Sverlov.Domain.csproj", "{EC416F78-C8C9-411B-9BF0-986086FAE3A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sverlov.API", "Sverlov.API\Sverlov.API.csproj", "{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EC416F78-C8C9-411B-9BF0-986086FAE3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC416F78-C8C9-411B-9BF0-986086FAE3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC416F78-C8C9-411B-9BF0-986086FAE3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

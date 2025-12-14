@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Sverlov.UI.Services;
 using Sverlov.UI;
 using Sverlov.UI.Data;
-using Sverlov.UI.Services;
+//using Sverlov.UI.Services;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,8 +40,12 @@ builder.Services.AddSingleton<IEmailSender, NoOpEmailSender>();
 
 //add custom services
 
-builder.Services.AddScoped<IProductService,MemoryProductService>();
-builder.Services.AddScoped<ITheTransportTypeService, MemoryTheTransportTypeService>();
+//builder.Services.AddScoped<IProductService,MemoryProductService>();
+//builder.Services.AddScoped<ITheTransportTypeService, MemoryTheTransportTypeService>();
+
+builder.Services.AddHttpClient<IProductService, ApiProductService>(client => client.BaseAddress = new Uri("https://localhost:7002/api/automobiles/"));
+
+builder.Services.AddHttpClient<ITheTransportTypeService, ApiTheTransportTypeService>(client =>client.BaseAddress = new Uri("https://localhost:7002/api/transporttypes/"));
 
 var app = builder.Build();
 
