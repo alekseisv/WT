@@ -20,14 +20,14 @@ namespace Sverlov.API.Data
                 ]);
             await db.SaveChangesAsync();
 
-            await db.Automodiles.AddRangeAsync(
+            await db.Automobiles.AddRangeAsync(
                 [new Automobile
                 {
                     Id = 1,
                     Name = "MAZ",
                     Description = "Грузовой автомобиль",
                     LiftingCapacity = 20000,
-                    Image = "https://localhost:7002/images/Maz_2.jfif",
+                    Image = "https://localhost:7002/images/Maz.jfif",
                     parsedDate = new DateOnly(2015, 10, 12),
                     TheTransportTypeId = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("truck"))!.Id,
                     TheTransportType = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("truck"))
@@ -38,7 +38,7 @@ namespace Sverlov.API.Data
                      Name = "Автобус МАЗ",
                      Description = "Пассажирский автобус",
                      LiftingCapacity = 330,
-                     Image = "https://localhost:7002/images/MiniMaz_2.jfif",
+                     Image = "https://localhost:7002/images/MiniMaz.jfif",
                      parsedDate = new DateOnly(2015, 10, 12),
                      TheTransportTypeId = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("minibus"))!.Id,
                      TheTransportType = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("minibus"))
@@ -49,7 +49,7 @@ namespace Sverlov.API.Data
                      Name = "Mercedes",
                      Description = "Легковой автомобиль",
                      LiftingCapacity = 500,
-                     Image = "https://localhost:7002/images/Mersedes_2.jfif",
+                     Image = "https://localhost:7002/images/Mersedes.jfif",
                      parsedDate = new DateOnly(2015, 10, 12),
                      TheTransportTypeId = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("car"))!.Id,
                      TheTransportType = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("car"))
@@ -60,7 +60,7 @@ namespace Sverlov.API.Data
                      Name = "Мотоцикл",
                      Description = "Вааще что-то новенькое!!!",
                      LiftingCapacity = 100,
-                     Image = "https://localhost:7002/images/Motobike_2.jfif",
+                     Image = "https://localhost:7002/images/Motobike.jfif",
                      parsedDate = new DateOnly(2015, 10, 12),
                      TheTransportTypeId = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("motorbike"))!.Id,
                      TheTransportType = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("motorbike"))
@@ -71,7 +71,7 @@ namespace Sverlov.API.Data
                      Name = "Volvo",
                      Description = "Грузовой автомобиль",
                      LiftingCapacity = 25000,
-                     Image = "https://localhost:7002/images/Volvo_2.jfif",
+                     Image = "https://localhost:7002/images/Volvo.jfif",
                      parsedDate = new DateOnly(2015, 10, 12),
                      TheTransportTypeId = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("truck"))!.Id,
                      TheTransportType = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("truck"))
@@ -82,7 +82,7 @@ namespace Sverlov.API.Data
                      Name = "BMW",
                      Description = "Легковой автомобиль",
                      LiftingCapacity = 300,
-                     Image = "https://localhost:7002/images/BMW_2.jfif",
+                     Image = "https://localhost:7002/images/BMW.jfif",
                      parsedDate = new DateOnly(2015, 10, 12),
                      TheTransportTypeId = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("car"))!.Id,
                      TheTransportType = db.TheTransportTypes.First(c=>c.NormalizedName.Equals("car"))

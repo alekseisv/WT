@@ -1,0 +1,86 @@
+﻿@page "/automobiles"
+@inject IProductService ProductService
+@using Sverlov.Domain
+
+
+<!-- Если ваш Automobile в другом namespace — поправьте -->
+
+<PageTitle>Каталог автомобилей</PageTitle>
+
+<h1 class="text-center my-5">Каталог автомобилей</h1>
+
+@if (ProductService.Products == null || !ProductService.Products.Any())
+{
+<div class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Загрузка...</span>
+    </div>
+    <p class="mt-3">Загрузка автомобилей...</p>
+</div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var auto in ProductService.Products)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    @if (!string.IsNullOrEmpty(auto.Image))
+                    {
+                        <img src="@auto.Image"
+                        class="card-img-top" alt="@auto.Name" style="height: 220px; object-fit: cover;"
+                             onerror="this.src='https://'via.placeholder.com/400x220?text=Автомобиль">
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/400x220?text=Автомобиль" class="card-img-top" alt="Нет фото">
+                    }
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@auto.Name</h5>
+                        <p class="card-text flex-grow-1">
+                            @if (!string.IsNullOrEmpty(auto.Description))
+                            {
+                                <strong>Модель:</strong> 
+                                @auto.Description
+                    
+                                <br />
+                            }
+                            <strong>Год:</strong> @auto.LiftingCapacity<br />
+                            @* @if (auto.Price.HasValue)
+                            {
+                                <strong>Цена:</strong> 
+                                @auto.Price.Value.ToString("C")
+                    
+                                <br />
+                            } *@
+                            @if (!string.IsNullOrEmpty(auto.Description))
+                            {
+                                <strong>Описание:</strong> 
+                                @auto.Description
+                            }
+                        </p>
+                        <div class="mt-auto">
+                            <button class="btn btn-outline-primary btn-sm me-2">Подробнее</button>
+                            <button class="btn btn-outline-danger btn-sm">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<!-- Пейджер под списком -->
+<div class="my-5">
+    <CascadingValue Value="ProductService">
+        <Pager />
+    </CascadingValue>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ProductService.GetProducts(1);
+    }
+}

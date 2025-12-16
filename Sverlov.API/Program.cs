@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Sverlov.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseStaticFiles();
+//app.UseStaticFiles(new StaticFileOptions
+//    {
+//        FileProvider=new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath,"images")),
+//        RequestPath="/images"
+//    }
+    
+//    );
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

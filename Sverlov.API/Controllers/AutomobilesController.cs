@@ -22,29 +22,27 @@ namespace Sverlov.API.Controllers
             _context = context;
         }
 
-        // GET: api/Automobiles?category=trucks
         [HttpGet]
-        public async Task<ActionResult<ResponseData<List<Automobile>>>> GetAutomobiles(string? category)
+        public async Task<ActionResult<ResponseData<List<Automobile>>>> GetAutomobiles(string? category, int page = 1, int pageSize = 10)
         {
-            IQueryable<Automobile> query = _context.Automodiles.Include(a => a.TheTransportType);
+            IQueryable<Automobile> query = _context.Automobiles.Include(a => a.TheTransportType);  // ← Исправили опечатку: Automobiles
 
             if (!string.IsNullOrEmpty(category))
             {
-                // Переносим логику фильтрации на клиентскую сторону (ToListAsync сначала)
-                var allData = await query.ToListAsync();
-                var filtered = allData.Where(a => a.TheTransportType != null &&
-                a.TheTransportType.NormalizedName.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
-
-                if (!filtered.Any())
-                {
-                    return Ok(ResponseData<List<Automobile>>.Error("Нет автомобилей в выбранной категории"));
-                }
-
-                return Ok(ResponseData<List<Automobile>>.OK(filtered));
+                query = query.Where(a => a.TheTransportType != null &&
+                a.TheTransportType.NormalizedName.Equals(category, StringComparison.OrdinalIgnoreCase));
             }
 
-            // Если категория не указана — возвращаем все с Include
-            var data = await query.ToListAsync();
+            if (!query.Any())
+            {
+                return Ok(ResponseData<List<Automobile>>.Error("Нет автомобилей"));
+            }
+
+            // Простая пагинация
+            int totalCount = await query.CountAsync();
+            var data = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            // Возвращаем список (без PagedResponse, так как у вас ResponseData)
             return Ok(ResponseData<List<Automobile>>.OK(data));
         }
 
@@ -54,7 +52,7 @@ namespace Sverlov.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Automobile>> GetAutomobile(int id)
         {
-            var automobile = await _context.Automodiles.FindAsync(id);
+            var automobile = await _context.Automobiles.FindAsync(id);
 
             if (automobile == null)
             {
@@ -100,7 +98,7 @@ namespace Sverlov.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Automobile>> PostAutomobile(Automobile automobile)
         {
-            _context.Automodiles.Add(automobile);
+            _context.Automobiles.Add(automobile);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAutomobile", new { id = automobile.Id }, automobile);
@@ -110,13 +108,13 @@ namespace Sverlov.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAutomobile(int id)
         {
-            var automobile = await _context.Automodiles.FindAsync(id);
+            var automobile = await _context.Automobiles.FindAsync(id);
             if (automobile == null)
             {
                 return NotFound();
             }
 
-            _context.Automodiles.Remove(automobile);
+            _context.Automobiles.Remove(automobile);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -124,7 +122,7 @@ namespace Sverlov.API.Controllers
 
         private bool AutomobileExists(int id)
         {
-            return _context.Automodiles.Any(e => e.Id == id);
+            return _context.Automobiles.Any(e => e.Id == id);
         }
     }
 }

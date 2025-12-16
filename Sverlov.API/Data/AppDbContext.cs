@@ -12,7 +12,7 @@ namespace Sverlov.API.Data
             
         }
 
-        public DbSet<Automobile> Automodiles { get; set; }
+        public DbSet<Automobile> Automobiles { get; set; }
         public DbSet<TheTransportType> TheTransportTypes { get; set; } = null;
     }
 }

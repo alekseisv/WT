@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sverlov.Domain", "Sverlov.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sverlov.API", "Sverlov.API\Sverlov.API.csproj", "{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sverlov.Blazor", "Sverlov.Blazor\Sverlov.Blazor.csproj", "{00162C9A-BC7A-49EE-AD93-12BDAE71F279}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3C8DB1A-AD15-46D1-9399-AA7C28BC1C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00162C9A-BC7A-49EE-AD93-12BDAE71F279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00162C9A-BC7A-49EE-AD93-12BDAE71F279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00162C9A-BC7A-49EE-AD93-12BDAE71F279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00162C9A-BC7A-49EE-AD93-12BDAE71F279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

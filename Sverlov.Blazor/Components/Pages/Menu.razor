@@ -1,0 +1,17 @@
+﻿@page "/menu"
+@inject IProductService ProductService
+
+@* <h2>Menu</h2>
+<h3>Каталог автомобилей</h3>
+
+<CascadingValue Value="ProductService">
+    <AutomobileList />
+    <Pager />
+</CascadingValue>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ProductService.GetProducts(1);
+    }
+} *@
